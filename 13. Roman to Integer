@@ -1,0 +1,27 @@
+class Solution {
+    public int romanToInt(String s) {
+        
+            int [] conversionLetters = new int[100];
+            conversionLetters['M'] = 1000;
+            conversionLetters['D'] = 500;
+            conversionLetters['C'] = 100;
+            conversionLetters['L'] = 50;
+            conversionLetters['X'] = 10;
+            conversionLetters['V'] = 5;
+            conversionLetters['I'] = 1;
+
+            int result = 0;
+
+            for(int i = 0; i < s.length(); ++i){
+                if(i != s.length() - 1) {
+                    if (conversionLetters[s.charAt(i)] >= conversionLetters[s.charAt(i + 1)])
+                        result += conversionLetters[s.charAt(i)];
+                    else
+                        result -= conversionLetters[s.charAt(i)];
+                }
+            }
+
+            return result + conversionLetters[s.charAt(s.length() - 1)];
+        
+    }
+}
