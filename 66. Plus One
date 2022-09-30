@@ -1,0 +1,31 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        
+       int lastIndex = digits.length - 1;
+        if(digits[lastIndex] != 9) {
+            digits[lastIndex] = (digits[lastIndex] + 1) % 10;
+            return digits;
+        }
+
+        int sum = 0;
+        for (int val : digits)
+            sum += val;
+        if(sum == digits.length * 9) {
+            int [] arr = new int [digits.length + 1];
+            arr[0] = 1;
+            return arr;
+        }
+
+        digits[lastIndex] = ++digits[lastIndex];
+        for(int i = lastIndex; i >= 1; --i) {
+            if(digits[i] > 9){
+                digits[i] = (digits[i]) % 10;
+                digits[i - 1] = digits[i - 1] + 1;
+            }
+
+        }
+
+
+        return digits;
+    }
+}
