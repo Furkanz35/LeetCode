@@ -1,0 +1,21 @@
+class Solution {
+    public int climbStairs(int n) {
+        
+        if(n == 0 || n == 1 || n==2 || n == 3)
+            return n;
+        
+        int firstPrevious = 2;
+        int secondPrevious = 1;
+        int sum = 0;
+        
+        for(int i = 2 ; i < n; ++i) {
+            
+            sum = firstPrevious + secondPrevious;
+            secondPrevious = firstPrevious;
+            firstPrevious = sum;
+            
+        }
+        
+        return sum;
+    }
+}
