@@ -1,0 +1,33 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+            int indexnums1 = m - 1;
+        int indexnums2 = n - 1;
+        int indexTotalArray = m + n - 1;
+        if(m == 0){
+            for ( int i = 0; i < n; ++i) {
+                nums1[i] = nums2[i];
+            }
+            return;
+        }
+        while(indexTotalArray >= 0) {
+            if(indexnums2 < 0 || indexnums1 < 0) {
+                if(indexnums2 >= 0) {
+                    while (indexnums2 >= 0) {
+                        nums1[indexnums2] = nums2[indexnums2];
+                        --indexnums2;
+                    }
+                }
+                break;
+            }
+
+            if(nums1[indexnums1] >= nums2[indexnums2]) {
+                nums1[indexTotalArray--] = nums1[indexnums1--];
+            }
+            else{
+                nums1[indexTotalArray--] = nums2[indexnums2--];
+            }
+
+        }
+    
+    }
+}
